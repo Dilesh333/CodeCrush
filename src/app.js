@@ -1,12 +1,15 @@
-const express = require ("express")
-const app = express()
-const port = 3000
+const express = require("express");
+const connectDB = require("./config/database");
+const app = express();
+const port = 3000;
 
-app.get("/", (req,res)=>{
-res.send("Hello World!")
-})
-
-app.listen(port, ()=>{
-    console.log("server is running successfully!");
-    
-})
+connectDB()
+  .then(() => {
+    console.log("Database connected successfully");
+    app.listen(port, () => {
+      console.log(`server successfully running`);
+    });
+  })
+  .catch((err) => {
+    console.log("Database connection failed");
+  });

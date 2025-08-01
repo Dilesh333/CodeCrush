@@ -1,14 +1,23 @@
 {
-  "name": "codecrush",
+  "name": "devcrush",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dilesh333/CodeCrush.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dilesh333/CodeCrush/issues"
+  },
+  "homepage": "https://github.com/Dilesh333/CodeCrush#readme",
   "description": "",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mongoose": "^8.17.0"
   }
 }
