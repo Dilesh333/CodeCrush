@@ -35,6 +35,16 @@ app.get("/user", async (req, res) => {
   }
 });
 
+//feed API -GET /feed- get all the user from db
+app.get("/feed", async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.send(users);
+  } catch (error) {
+    res.status(404).send("something went wrong");
+  }
+});
+
 
 
 connectDB()
