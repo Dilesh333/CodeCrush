@@ -10,16 +10,32 @@ app.post("/signup", async (req, res) => {
   //creating a new user instance
   const user = new User(req.body);
 
-
-  try{
+  try {
     await user.save();
     res.send("User Added Successfully");
-  }
-  catch(err){
+  } catch (err) {
     res.status(400).send("Error adding user: " + err.message);
   }
-  
 });
+
+//find user by email
+app.get("/user", async (req, res) => {
+  const userEmail = req.body.emailId;
+  console.log(userEmail);
+
+  try {
+    const users = await User.find({ emailId: userEmail });
+    if (users.length === 0) {
+      res.status(404).send("User not found");
+    } else {
+      res.send(users);
+    }
+  } catch (err) {
+    res.status(400).send("Something went wrong");
+  }
+});
+
+
 
 connectDB()
   .then(() => {
